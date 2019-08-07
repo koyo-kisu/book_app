@@ -1,18 +1,17 @@
+<!-- layouts/bookapp.blade.phpを継承 -->
 @extends('layouts.bookapp')
-@section('title', 'book.index')
 
+<!-- @yieldにテンプレートごとに'タイトル'を代入 -->
+@section('title', 'タイトル')
+
+<!-- bookapp.blade.phpの@yield('menubar')に以下を追加 -->
 @section('menubar')
    @parent
    インデックスページ
 @endsection
 
+<!-- bookapp.blade.phpの@yield('content')に以下を追加 -->
 @section('content')
-
-　　<!-- 登録ページに遷移 -->
-    {!! Form::open(['url' => '/book/create', 'method' => 'get']) !!}
-        {!! Form::submit('登録', ['class' => 'form-control', 'id' => '']) !!}
-    {!! Form::close() !!}  
-
     <!-- データベースの表示 -->
     <table>
         <tr>
@@ -28,10 +27,12 @@
                 <td>{{$item->publisher}}</td>
                 <td>{{$item->description}}</td>
             </tr>
+            <a href="/articles/{{$article->id}}">詳細を表示</a>
         @endforeach
     </table>   
 @endsection
 
+<!-- bookapp.blade.phpの@yield('footer')に以下を追加 -->
 @section('footer')
 copyright 2019 koyo
-@endsectio
+@endsection

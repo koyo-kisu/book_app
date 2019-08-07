@@ -1,5 +1,5 @@
 @extends('layouts.bookapp')
-@section('title', 'book.create')
+@section('title', 'タイトル')
 
 @section('menubar')
    @parent
@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<form action="/book" method="post">
+<form action="/articles" method="post">
     {{ csrf_field() }}
     <tr><th>タイトル:</th><td><input type="text" name="title" value="{{old('title')}}"></td></tr>
     <tr><th>著者:</th><td><input type="text" name="author" value="{{old('author')}}"></td></tr>

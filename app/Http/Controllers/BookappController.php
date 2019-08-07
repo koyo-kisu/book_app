@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Restdata;
 
+//モデル追加
 use App\Book;
 use App\User;
+
+use App\Http\Requests\BookRequest;
 
 class BookappController extends Controller
 {
@@ -15,10 +18,11 @@ class BookappController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $items = Book::all();
-        return $items->toArray();
+        // return $items;
+        return view('articles.index', ['items' => $items]);
     }
 
     /**
@@ -28,7 +32,12 @@ class BookappController extends Controller
      */
     public function create()
     {
-        return view('book.create');
+        $this->validate($request, Book::$rules);
+        $book = new Book;
+        $form = $request->all();
+        unset($form['_token']);
+        $book->fill($form)->save();
+        return redirect('/');
     }
 
     /**
@@ -42,8 +51,8 @@ class BookappController extends Controller
         $restdata = new Book;
         $form = $request->all();
         unset($form['_token']);
-        $restdata->fill($param)->save();
-        return redirect('/book');
+        $restdata->fill($form)->save();
+        return redirect('/');
     }
 
     /**
@@ -55,7 +64,7 @@ class BookappController extends Controller
     public function show($id)
     {
         $item = Book::find($id);
-        return $item->toArray();
+        return view('articles.show', ['article' => $article]);
     }
 
     /**
