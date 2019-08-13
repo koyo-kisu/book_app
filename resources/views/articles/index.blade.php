@@ -1,16 +1,12 @@
-<!-- layouts/bookapp.blade.phpを継承 -->
 @extends('layouts.bookapp')
 
-<!-- @yieldにテンプレートごとに'タイトル'を代入 -->
 @section('title', 'タイトル')
 
-<!-- bookapp.blade.phpの@yield('menubar')に以下を追加 -->
 @section('menubar')
    @parent
    インデックスページ
 @endsection
 
-<!-- bookapp.blade.phpの@yield('content')に以下を追加 -->
 @section('content')
     <!-- データベースの表示 -->
     <table>
@@ -27,12 +23,11 @@
                 <td>{{$item->publisher}}</td>
                 <td>{{$item->description}}</td>
             </tr>
-            <a href="/articles/{{$article->id}}">詳細を表示</a>
+            <a href="/articles/{{$item->id}}">詳細を表示</a>
         @endforeach
     </table>   
 @endsection
 
-<!-- bookapp.blade.phpの@yield('footer')に以下を追加 -->
 @section('footer')
 copyright 2019 koyo
 @endsection

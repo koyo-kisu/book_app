@@ -63,6 +63,7 @@ class BookappController extends Controller
      */
     public function show($id)
     {
+        // 引数で受け取った$idを元にfindでレコードを取得
         $item = Book::find($id);
         return view('articles.show', ['article' => $article]);
     }

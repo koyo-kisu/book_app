@@ -11,17 +11,6 @@
 |
 */
 
-Route::get('/', function() {
-    return view('articles/index');
-});
-
-Route::get('/create', function() {
-    return view('articles/create');
-});
-
-Route::get('/show', function() {
-    return view('articles/show');
-});
-
+Route::get('/', 'BookappController@index');
 
 Route::resource('articles', 'BookappController');
