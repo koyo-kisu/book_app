@@ -17,8 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/* get */
+/* get送信 */
 Route::get('books', 'Api\BookController@index');
 
-/* post */
+/* post送信 */
 Route::post('create', 'Api\BookController@create');
